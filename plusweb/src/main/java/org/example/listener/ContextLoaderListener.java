@@ -11,9 +11,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class ContextLoaderListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        ServletContext servletContext=sce.getServletContext();
+
+//        String contextConfigLocation=servletContext.getInitParameter("contextConfigLocation");
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
 
-        ServletContext servletContext=sce.getServletContext();
         servletContext.setAttribute("app",applicationContext);
         System.out.println("container done");
     }
