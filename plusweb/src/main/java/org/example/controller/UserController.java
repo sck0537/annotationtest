@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.domain.User;
+import org.example.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-
 
 
     @RequestMapping(value = "/quick", method = RequestMethod.GET)
@@ -71,15 +72,59 @@ public class UserController {
     public String save8() throws IOException {
 //        return "{\"username\":\"777\" \"age\":18}";
 
-        User user=new User();
+        User user = new User();
         user.setUsername("s");
-        user.setAge(20);
-        ObjectMapper objectMapper=new ObjectMapper();
-        String json=objectMapper.writeValueAsString(user);
-        return json ;
-
+        user.setAge(32);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(user);
+        return json;
 
 
     }
 
+    @RequestMapping(value = "/quick10")
+    @ResponseBody
+    public User save10() {
+        User user = new User();
+        user.setUsername("s");
+        user.setAge(29);
+        return user;
+
+    }
+
+    @RequestMapping(value = "/quick11")
+    @ResponseBody
+    public void save11(String username, int age) {
+        System.out.println(username);
+        System.out.println(age);
+
+    }
+
+    @RequestMapping(value = "/quick12")
+    @ResponseBody
+    public void save12(String username, int age) {
+        System.out.println(username);
+        System.out.println(age);
+
+    }
+
+    @RequestMapping(value = "/quick13")
+    @ResponseBody
+    public void save13(User user) {
+        System.out.println(user);
+
+    }
+
+    @RequestMapping(value = "/quick14")
+    @ResponseBody
+    public void save14(String[] strs) {
+        System.out.println(Arrays.asList(strs));
+
+    }
+
+    @RequestMapping(value = "/quick15")
+    @ResponseBody
+    public void save15(VO vo) {
+        System.out.println(vo);;
+    }
 }

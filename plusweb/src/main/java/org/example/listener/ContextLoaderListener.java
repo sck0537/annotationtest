@@ -20,9 +20,4 @@ public class ContextLoaderListener implements ServletContextListener {
         System.out.println("container done");
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        ServletContextListener.super.contextDestroyed(sce);
-    }
-
 }
